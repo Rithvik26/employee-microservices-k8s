@@ -494,14 +494,14 @@ spec:
   - http:
       paths:
       - path: /user-service(/|\$)(.*)
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: user-service
             port:
               number: 80
       - path: /notification-service(/|\$)(.*)
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: notification-service
