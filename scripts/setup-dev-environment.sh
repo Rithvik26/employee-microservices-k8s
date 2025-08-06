@@ -4,6 +4,17 @@ set -e
 echo "🏢 Setting up Donato-style Professional Development Environment..."
 echo "📦 This simulates enterprise AWS EKS environment locally"
 
+# Wait for Docker to be ready
+echo "⏳ Waiting for Docker to start..."
+for i in {1..30}; do
+    if docker version > /dev/null 2>&1; then
+        echo "✅ Docker is ready!"
+        break
+    fi
+    echo "Waiting for Docker... ($i/30)"
+    sleep 2
+done
+
 # Install kind (simulates AWS EKS cluster)
 echo "⚙️  Installing Kubernetes-in-Docker (kind)..."
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
