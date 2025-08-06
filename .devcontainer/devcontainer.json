@@ -2,8 +2,7 @@
     "name": "Employee Microservices Platform - Professional Setup",
     "image": "mcr.microsoft.com/devcontainers/universal:2",
     "features": {
-      "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-      "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {}
+      "ghcr.io/devcontainers/features/docker-in-docker:2": {}
     },
     "customizations": {
       "vscode": {
@@ -15,7 +14,13 @@
         ]
       }
     },
-    "postCreateCommand": "echo 'Environment ready. Run ./scripts/setup-dev-environment.sh to initialize cluster'",
+    "runArgs": [
+      "--cap-add=SYS_PTRACE",
+      "--security-opt=seccomp=unconfined",
+      "--privileged",
+      "--init"
+    ],
+    "postCreateCommand": "echo 'Environment ready! To setup Kubernetes, run: ./scripts/setup-dev-environment.sh'",
     "forwardPorts": [8080, 8081, 8082, 9090],
     "remoteUser": "codespace"
   }
