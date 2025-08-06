@@ -1,5 +1,5 @@
 {
-    "name": "Employee Microservices Platform - Professional Setup",
+    "name": "Employee Microservices Platform",
     "image": "mcr.microsoft.com/devcontainers/universal:2",
     "features": {
       "ghcr.io/devcontainers/features/docker-in-docker:2": {},
@@ -10,12 +10,11 @@
         "extensions": [
           "ms-kubernetes-tools.vscode-kubernetes-tools",
           "ms-python.python",
-          "ms-vscode.vscode-yaml",
-          "redhat.vscode-yaml"
+          "ms-azuretools.vscode-docker"
         ]
       }
     },
-    "postCreateCommand": "chmod +x scripts/setup-dev-environment.sh && ./scripts/setup-dev-environment.sh",
+    "postCreateCommand": "echo 'Environment ready. Run ./scripts/setup-dev-environment.sh to initialize cluster'",
     "forwardPorts": [8080, 8081, 8082, 9090],
     "remoteUser": "codespace"
   }
